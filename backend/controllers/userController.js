@@ -153,11 +153,6 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-    // user.isAdmin =
-    //   req.body.isAdmin === null
-    //     ? user.isAdmin
-    //     : req.body.isAdmin === true ||
-    //       (req.body.isAdmin === false && req.body.isAdmin);
 
     if (req.body.isAdmin === true) {
       user.isAdmin = true;
