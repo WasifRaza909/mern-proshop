@@ -1,11 +1,13 @@
 //   bcrypt used for encrypt password, colors is used to color console, dotenv is used for
 // env var jsonwebtoken is used to generate token multer is used for sending different format files
 // concurrently is used to start backend and frontend together and nodemon is used to not restart server again and again
+// Morgan consoles route,http req, seconds and response to console when hitting a route
 
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
+import morgan from 'morgan';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 
@@ -19,6 +21,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use(express.json());
 
