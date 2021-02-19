@@ -1,4 +1,5 @@
 // axios is used to send requests to backend, react-paypal-button-v2 is used to link with paypal,
+// React Helmel is used to add title on pages, it adds meta tag, It's bad for SEO
 
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
