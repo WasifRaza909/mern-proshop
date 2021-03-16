@@ -16,6 +16,7 @@ const getProducts = asyncHandler(async (req, res) => {
         },
       }
     : {};
+
   // Count Products
   const count = await Product.countDocuments({ ...keyword });
 
@@ -48,7 +49,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     await product.remove();
-
     res.json({ message: 'Product removed' });
   } else {
     res.status(404);
@@ -84,11 +84,11 @@ const updateProduct = asyncHandler(async (req, res) => {
   const {
     name,
     price,
-    description,
     image,
     brand,
     category,
     countInStock,
+    description,
   } = req.body;
 
   const product = await Product.findById(req.params.id);
@@ -157,7 +157,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 // @route   GET /api/poducts/top
 // @access  Public
 const getTopProducts = asyncHandler(async (req, res) => {
-  // Neg 1 is done for asc order
+  // Negative 1 is done for asc order
   const products = await Product.find({}).sort({ rating: -1 }).limit(3);
 
   res.json(products);

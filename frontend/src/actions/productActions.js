@@ -200,6 +200,7 @@ export const createProductReview = (productId, review) => async (
       type: PRODUCT_CREATE_REVIEW_SUCCESS,
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: PRODUCT_CREATE_REVIEW_FAIL,
       payload:
